@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>4fe67d8f-393c-4cd3-8ea5-a13da528a85f</ProjectGuid>
+    <ProjectGuid>{4FE67D8F-393C-4CD3-8EA5-A13DA528A85F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Reface.CommandBus</RootNamespace>
@@ -31,24 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ConfigurationCommandHandlerFactory.cs" />
+    <Compile Include="Configuration\CommandBusSection.cs" />
+    <Compile Include="Configuration\CommandBusSectionFactory.cs" />
+    <Compile Include="Configuration\Handler.cs" />
+    <Compile Include="Configuration\HandlerCollection.cs" />
+    <Compile Include="DefaultCommandBus.cs" />
+    <Compile Include="DefaultCommandHandlerFactory.cs" />
+    <Compile Include="Errors\CommandBusException.cs" />
+    <Compile Include="Errors\CommandHandlerAlreadyExistsException.cs" />
+    <Compile Include="Errors\CommandHandlerNotFoundException.cs" />
+    <Compile Include="Extensions\CommandBusExtensions.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandBus.cs" />
+    <Compile Include="ICommandHandler.cs" />
+    <Compile Include="ICommandHandlerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
