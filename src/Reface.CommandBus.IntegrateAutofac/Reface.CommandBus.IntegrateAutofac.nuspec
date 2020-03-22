@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Reface.CommandBus.IntegrateAutofac</id>
+    <version>1.0.0</version>
+    <title>Reface.CommandBus.IntegrateAutofac</title>
+    <authors>ShimizuShiori</authors>
+    <owners>ShimizuShiori</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/ShimizuShiori/Reface.CommandBus</projectUrl>
+    <description>Reface,CommandBus 与 autofac 的集成库</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>CQRS CommandBus Autofac</tags>
+  </metadata>
+</package>
