@@ -86,7 +86,7 @@ public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
 
 ## 2 安装
 
-使用 nuget 即可安装 **Reface.CommandBus**
+访问 [nuget] 页面，使用相应的命令行下载最新版。
 
 ## 3 使用
 
@@ -160,3 +160,4 @@ string result = commandBus.Dispatch<HelloCommand, string>(command);
 
 
 [CQRS]: https://www.baidu.com/s?ie=UTF-8&wd=CQRS
+[nuget]: https://www.nuget.org/packages/Reface.CommandBus/
