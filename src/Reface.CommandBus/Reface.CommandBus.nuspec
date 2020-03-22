@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Reface.CommandBus</id>
+    <version>1.0.0</version>
+    <title>Reface.CommandBus</title>
+    <authors>ShimizuShiori</authors>
+    <owners>ShimizuShiori</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/ShimizuShiori/Reface.CommandBus</projectUrl>
+    <description>一个基于 CQRS 思想实现的命令总线</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>CQRS CommandBus</tags>
+  </metadata>
+</package>
