@@ -7,7 +7,7 @@
     <ProjectGuid>{7F95A313-A89D-4153-849E-E53714C4CF88}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reface.CommandBus.IntegrateAutofac</RootNamespace>
+    <RootNamespace>Reface.CommandBus</RootNamespace>
     <AssemblyName>Reface.CommandBus.IntegrateAutofac</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,7 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AutofacCommandHandlerFactory.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
