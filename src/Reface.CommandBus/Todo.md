@@ -1,1 +1,0 @@
-* 以程序集的方式注册 *CommandHandler*

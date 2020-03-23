@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlerFactoryBase.cs" />
     <Compile Include="ConfigurationCommandHandlerFactory.cs" />
     <Compile Include="Configuration\CommandBusSection.cs" />
     <Compile Include="Configuration\CommandBusSectionFactory.cs" />
@@ -61,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Reface.CommandBus.nuspec" />
+    <None Include="ReleaseNotes.md" />
+    <None Include="Todo.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

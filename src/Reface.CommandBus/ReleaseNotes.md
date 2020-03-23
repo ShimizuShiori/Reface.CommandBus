@@ -9,3 +9,7 @@
     * 通过 *.config* 文件的方式注册
 * 允许用户开发自定义的 *CommandHandlerFactory*
 * 实现了 不需要关心 *CommandHandler* 的 *CommandBus.Dispatch* 方法
+
+## 1.1.1
+
+* 修改了 *ConfigurationCommandHandlerFactory* 的构建过程 , 本质是使用 *DefaultCommandHandlerFactory* 进行 *CommandHandler* 的注册
