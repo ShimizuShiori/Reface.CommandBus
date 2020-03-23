@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Reface.CommandBus.IntegrateAutofac</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Reface.CommandBus.IntegrateAutofac</title>
     <authors>ShimizuShiori</authors>
     <owners>ShimizuShiori</owners>

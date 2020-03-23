@@ -38,7 +38,7 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Reface.CommandBus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Reface.CommandBus.1.1.0\lib\net461\Reface.CommandBus.dll</HintPath>
+      <HintPath>..\packages\Reface.CommandBus.1.1.1\lib\net461\Reface.CommandBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
