@@ -4,9 +4,11 @@ namespace Reface.CommandBus.IntegrateAutofac.Tests.CommandHandlers
 {
     public class ACommandHandler : ICommandHandler<ACommand>
     {
-        public object Handler(ACommand command)
+        public void Handle(ACommand command)
         {
-            return "A";
+            command.AResult = "A";
         }
+
+        
     }
 }

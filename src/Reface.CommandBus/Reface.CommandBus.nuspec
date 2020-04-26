@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package >
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Reface.CommandBus</id>
-    <version>1.1.1</version>
+    <version>2.0.1</version>
     <title>Reface.CommandBus</title>
-    <authors>ShimizuShiori</authors>
-    <owners>ShimizuShiori</owners>
+    <authors>Felix</authors>
+    <owners>Felix</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/ShimizuShiori/Reface.CommandBus</projectUrl>
@@ -13,4 +13,7 @@
     <copyright>Copyright 2020</copyright>
     <tags>CQRS CommandBus</tags>
   </metadata>
+  <files>
+    <file src="bin\Debug\Reface.CommandBus.xml"/>
+  </files>
 </package>

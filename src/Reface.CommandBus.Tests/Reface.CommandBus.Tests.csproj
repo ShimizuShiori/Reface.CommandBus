@@ -56,13 +56,18 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="CommandHandlers\InterfaceCommandHandler.cs" />
-    <Compile Include="CommandHandlers\NewUserCommandHandler.cs" />
-    <Compile Include="Commands\IInterfaceCommand.cs" />
-    <Compile Include="Commands\NewUserCommand.cs" />
-    <Compile Include="DefaultCommandBusTests.cs" />
-    <Compile Include="DefaultCommandHandlerFactoryTests.cs" />
+    <Compile Include="CommandBusTests.cs" />
+    <Compile Include="CommandHandlers\HelloCommandHandler.cs" />
+    <Compile Include="CommandHandlers\SetDeptNameCommandHandler.cs" />
+    <Compile Include="CommandHandlers\SetRoleNameCommandHandler.cs" />
+    <Compile Include="CommandHandlers\SetUserNameCommandHandler.cs" />
+    <Compile Include="Commands\HelloCommand.cs" />
+    <Compile Include="Commands\ISetDepNameCommand.cs" />
+    <Compile Include="Commands\ISetRoleNameCommand.cs" />
+    <Compile Include="Commands\ISetUserNameCommand.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TiggerModeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

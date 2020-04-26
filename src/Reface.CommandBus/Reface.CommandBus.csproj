@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Reface.CommandBus.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,18 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlerFactoryBase.cs" />
-    <Compile Include="ConfigurationCommandHandlerFactory.cs" />
-    <Compile Include="Configuration\CommandBusSection.cs" />
-    <Compile Include="Configuration\CommandBusSectionFactory.cs" />
-    <Compile Include="Configuration\Handler.cs" />
-    <Compile Include="Configuration\HandlerCollection.cs" />
+    <Compile Include="CommandHandlerInfo.cs" />
+    <Compile Include="Core\ICommandHandler.cs" />
     <Compile Include="DefaultCommandBus.cs" />
     <Compile Include="DefaultCommandHandlerFactory.cs" />
     <Compile Include="Errors\CommandBusException.cs" />
     <Compile Include="Errors\CommandHandlerAlreadyExistsException.cs" />
     <Compile Include="Errors\CommandHandlerNotFoundException.cs" />
-    <Compile Include="Extensions\CommandBusExtensions.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandBus.cs" />
     <Compile Include="ICommandHandler.cs" />

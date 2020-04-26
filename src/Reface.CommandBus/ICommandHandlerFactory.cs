@@ -1,4 +1,8 @@
-﻿namespace Reface.CommandBus
+﻿using System;
+using System.Collections.Generic;
+using Reface.CommandBus.Core;
+
+namespace Reface.CommandBus
 {
     /// <summary>
     /// 命令处理器工厂
@@ -6,11 +10,10 @@
     public interface ICommandHandlerFactory
     {
         /// <summary>
-        /// 创建命令处理器
+        /// 根据指定的命令类型，获取所有可以处理的处理器
         /// </summary>
-        /// <typeparam name="TCommand">命令的类型</typeparam>
-        /// <exception cref="Reface.CommandBus.Errors.CommandHandlerNotFoundException">当命令不存在时的异常</exception>
+        /// <param name="commandType"></param>
         /// <returns></returns>
-        ICommandHandler<TCommand> Create<TCommand>() where TCommand : ICommand;
+        IEnumerable<ICommandHandler> GetHandlers(Type commandType);
     }
 }

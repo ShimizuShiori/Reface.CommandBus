@@ -1,58 +1,44 @@
-﻿using Reface.CommandBus.Errors;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Reface.CommandBus.Core;
 
 namespace Reface.CommandBus
 {
-    public class DefaultCommandHandlerFactory : CommandHandlerFactoryBase
+    /// <summary>
+    /// 默认的处理器工厂
+    /// </summary>
+    public class DefaultCommandHandlerFactory : ICommandHandlerFactory
     {
-        private readonly Dictionary<Type, Func<object>> handlerCreators = new Dictionary<Type, Func<object>>();
+        private readonly List<CommandHandlerInfo> creators;
 
-        private DefaultCommandHandlerFactory RegisterCreator(Type commandType, Func<object> creator)
+        public DefaultCommandHandlerFactory()
         {
-            if (handlerCreators.ContainsKey(commandType))
-                throw new CommandHandlerAlreadyExistsException(commandType);
-            handlerCreators[commandType] = creator;
+            this.creators = new List<CommandHandlerInfo>();
+        }
+
+        /// <summary>
+        /// 注册一个命令处理器
+        /// </summary>
+        /// <typeparam name="TCommand">所能处理的命令类型</typeparam>
+        /// <param name="creator"></param>
+        /// <returns></returns>
+        public DefaultCommandHandlerFactory Register<TCommand>(Func<ICommandHandler> creator)
+            where TCommand : ICommand
+        {
+
+            this.creators.Add(new CommandHandlerInfo(typeof(TCommand), creator));
             return this;
         }
 
-        public DefaultCommandHandlerFactory Register(Type handlerType)
+        public IEnumerable<ICommandHandler> GetHandlers(Type commandType)
         {
-            Type baseType = typeof(ICommandHandler<>);
-            Type baseTypeOfHandler = handlerType.GetInterface(baseType.FullName);
-            Type commandType = baseTypeOfHandler.GetGenericArguments()[0];
-            return this.RegisterCreator(commandType, () => Activator.CreateInstance(handlerType));
-        }
-
-        public DefaultCommandHandlerFactory Register<TCommand>(Func<ICommandHandler<TCommand>> creator)
-            where TCommand : ICommand
-        {
-            return this.RegisterCreator(typeof(TCommand), () => creator());
-        }
-
-        public DefaultCommandHandlerFactory Register<TCommand>(ICommandHandler<TCommand> handler)
-            where TCommand : ICommand
-        {
-            return this.Register<TCommand>(() => handler);
-        }
-
-        public DefaultCommandHandlerFactory Register<TCommand, THandler>()
-            where TCommand : ICommand
-            where THandler : ICommandHandler<TCommand>, new()
-        {
-            return this.Register<TCommand>(() => new THandler());
-        }
-
-        protected override bool TryCreate<TCommand>(out ICommandHandler<TCommand> handler)
-        {
-            handler = null;
-            Func<object> creator;
-            if (handlerCreators.TryGetValue(typeof(TCommand), out creator))
+            List<ICommandHandler> result = new List<ICommandHandler>();
+            foreach (var creator in creators)
             {
-                handler = (ICommandHandler<TCommand>)creator();
-                return true;
+                if (!creator.CommandType.IsAssignableFrom(commandType)) continue;
+                result.Add(creator.Creator());
             }
-            return false;
+            return result;
         }
     }
 }

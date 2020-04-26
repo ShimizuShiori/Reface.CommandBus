@@ -4,6 +4,12 @@ using Reface.CommandBus.IntegrateAutofac.Tests.Commands;
 
 namespace Reface.CommandBus.Tests
 {
+    public class MyCommand : ACommand, BCommand
+    {
+        public string BResult { get; set; }
+        public string AResult { get; set; }
+    }
+
     [TestClass()]
     public class AutofacCommandHandlerFactoryTests
     {
@@ -11,14 +17,16 @@ namespace Reface.CommandBus.Tests
         public void Create()
         {
             ContainerBuilder builder = new ContainerBuilder();
-            builder.RegsiterCommandHandlers(this.GetType().Assembly);
-            builder.RegisterType(typeof(AutofacCommandHandlerFactory)).AsImplementedInterfaces();
-            builder.RegisterType(typeof(DefaultCommandBus)).AsImplementedInterfaces();
+            builder
+                .RegisterCommandBusComponents()
+                .RegsiterCommandHandlers(this.GetType().Assembly);
             var container = builder.Build();
 
             ICommandBus bus = container.Resolve<ICommandBus>();
-            ACommand cmd = new ACommand();
-            Assert.AreEqual("A", bus.Dispatch<ACommand, string>(cmd));
+            MyCommand cmd = new MyCommand();
+            bus.Dispatch(cmd);
+            Assert.AreEqual("A", cmd.AResult);
+            Assert.AreEqual("B", cmd.BResult);
         }
     }
 }

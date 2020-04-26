@@ -1,4 +1,5 @@
-﻿namespace Reface.CommandBus
+﻿
+namespace Reface.CommandBus
 {
     /// <summary>
     /// 命令接口
