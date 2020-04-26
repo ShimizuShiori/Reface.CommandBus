@@ -55,5 +55,29 @@ namespace Reface.CommandBus.Tests
 
             Assert.AreEqual(1234, value);
         }
+
+        [TestMethod]
+        public void DispatchInterfaceCommand()
+        {
+            DefaultCommandHandlerFactory f = new DefaultCommandHandlerFactory();
+            f.Register<IInterfaceCommand>(() => new InterfaceCommandHandler());
+
+            ICommandBus bus = new DefaultCommandBus(f);
+            var cmd = new MyCommand("Felix");
+            bus.Dispatch(cmd);
+
+            Assert.AreEqual("Hello : Felix", cmd.Text);
+        }
+
+        private class MyCommand : IInterfaceCommand
+        {
+            public string Name { get; private set; }
+
+            public string Text { get; set; }
+            public MyCommand(string name)
+            {
+                this.Name = name;
+            }
+        }
     }
 }

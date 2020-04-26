@@ -56,7 +56,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CommandHandlers\InterfaceCommandHandler.cs" />
     <Compile Include="CommandHandlers\NewUserCommandHandler.cs" />
+    <Compile Include="Commands\IInterfaceCommand.cs" />
     <Compile Include="Commands\NewUserCommand.cs" />
     <Compile Include="DefaultCommandBusTests.cs" />
     <Compile Include="DefaultCommandHandlerFactoryTests.cs" />
