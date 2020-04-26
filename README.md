@@ -133,29 +133,45 @@ ICommandBus commandBus = new DefaultCommandBus(factory);
 HelloCommand command = new HelloCommand();
 
 // 只要你所编写的 Handler 能够从 ICommandHandlerFactory 中产出，这里一定会执行到
-string result = commandBus.Dispatch<HelloCommand, string>(command);
+commandBus.Dispatch(command);
 ```
 
----
 
-# 配置文件结构
+## 4 更灵活的用法
 
-## 1 引入 section
+2.0.0 版本起，CommandBus 不再返回值，
 
-放在 configuration / configSections 内
+而是将 TCommand 视作即包含了执行命令的参数，也包含了执行命令的结果。
 
-```xml
-<section name="commandBus" type="Reface.CommandBus.Configuration.CommandBusSection, Reface.CommandBus"/>
+比如一个获取用户名称的命令，使用只读属性表示向 *CommandHandler* 提供参数，使用只写属性表示向 *CommandHandler* 提供执行结果。
+
+由于命令往往只有属性组成，所以强烈建议你的命令都是 *interface*
+```csharp
+public interface IGetUserNameCommand : ICommand
+{
+    string UserName { set; }
+    int UserId { get; } 
+}
 ```
 
-## 2 添加 Handler
+你可以为你任何一种业务模式赋予命令的功能，让它能够通过事件总线获取相应的属性
+```csharp
+// OrderModel.cs
+public class OrderModel : IGetUserNameCommand
+{
+    public OrderEntity Order { get; private set; }
 
-```xml
-<commandBus>
-    <handlers>
-        <add type="Reface.CommandBus.Tests.CommandHandlers.NewUserCommandHandler, Reface.CommandBus.Tests"></add>
-    </handlers>
-</commandBus>
+    public int UserId => Order.CreateUserId;
+
+    public String UserName {  get; set; }
+}
+```
+
+```csharp
+// code
+OrderModel order = this.OrderService.GetById(1);
+commandBus.Dispatch(order);
+string createUserName = order.UserName;
 ```
 
 
